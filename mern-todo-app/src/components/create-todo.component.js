@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default class CreateTodo extends Component {
@@ -67,19 +68,19 @@ this.onChangeTodoResponsible.bind(this);
 
     render() {
         return (
-            <div style={{marginTop: 10}}>
-                <h3>Create New Todo</h3>
+            <div class="container" style={{marginTop: 10}}>
+                <h5>Create New Task</h5>
                 <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Description: </label>
+                    <div class="input-field col s12">
+                        <label>Description</label>
                         <input  type="text"
                                 className="form-control"
                                 value={this.state.todo_description}
                                 onChange={this.onChangeTodoDescription}
                                 />
                     </div>
-                    <div className="form-group">
-                        <label>Responsible: </label>
+                    <div className="input-field col s12">
+                        <label>Who will be responsible</label>
                         <input
                                 type="text"
                                 className="form-control"
@@ -88,52 +89,46 @@ this.onChangeTodoResponsible.bind(this);
                                 />
                     </div>
                     <div className="form-group">
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input"
+                          <label><h6>Priority</h6></label>
+                          <label>
+                            <input  class="with-gap"
                                     type="radio"
                                     name="priorityOptions"
                                     id="priorityLow"
                                     value="Low"
-
-checked={this.state.todo_priority==='Low'}
+                                    checked={this.state.todo_priority==='Low'}
                                     onChange={this.onChangeTodoPriority}
                                     />
-                            <label
-className="form-check-label">Low</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input"
+                                    <span>Low</span>
+                          </label>
+                          <label>
+                            <input  class="with-gap"
                                     type="radio"
                                     name="priorityOptions"
                                     id="priorityMedium"
                                     value="Medium"
-
-checked={this.state.todo_priority==='Medium'}
+                                    checked={this.state.todo_priority==='Medium'}
                                     onChange={this.onChangeTodoPriority}
                                     />
-                            <label
-className="form-check-label">Medium</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input"
+                                    <span>Medium</span>
+                          </label>
+                          <label>
+                            <input  class="with-gap"
                                     type="radio"
                                     name="priorityOptions"
                                     id="priorityHigh"
                                     value="High"
-
-checked={this.state.todo_priority==='High'}
+                                    checked={this.state.todo_priority==='High'}
                                     onChange={this.onChangeTodoPriority}
                                     />
-                            <label
-className="form-check-label">High</label>
-                        </div>
+                                    <span>High</span>
+                          </label>
                     </div>
-
-                    <div className="form-group">
-                        <input type="submit" value="Create Todo"
-className="btn btn-primary" />
+                    <div className="form-group" style={{marginTop: 10}}>
+                        <input type="submit" value="Create Task" className="btn btn-primary" />
                     </div>
                 </form>
+                <div class="col s6"><h6><Link to="/dashboard" className="nav-link">&#171; Back</Link></h6></div>
             </div>
         )
     }

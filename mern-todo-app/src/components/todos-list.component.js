@@ -38,9 +38,12 @@ export default class TodosList extends Component {
 
     render() {
         return (
-            <div>
-                <h3>Todos List</h3>
-                <table className="table table-striped" style={{ marginTop: 20 }} >
+            <div class="container">
+              <div class="col s6"><h3>Tasks List</h3></div>
+                <div class="row" style={{ marginTop: -50 }}>
+                  <div class="col s6 offset-m9"><h6><Link to="/create" className="nav-link">Create New Task</Link></h6></div>
+                </div>
+                <table class="highlight" style={{ marginTop: -20 }} >
                     <thead>
                         <tr>
                             <th>Description</th>
@@ -53,7 +56,7 @@ export default class TodosList extends Component {
                         { this.todoList() }
                     </tbody>
                 </table>
-            </div>
+          </div>
         )
     }
 }

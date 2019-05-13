@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default class EditTodo extends Component {
@@ -71,13 +72,13 @@ export default class EditTodo extends Component {
         axios.post('http://localhost:5000/todos/update/'+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
 
-        this.props.history.push('');
+        window.location.href = "/dashboard";
     }
 
     render() {
         return (
-            <div>
-                <h3 align="center">Update Todo</h3>
+            <div class="container" style={{marginTop: 10}}>
+                <h5>Update Tasks</h5>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Description: </label>
@@ -97,41 +98,45 @@ export default class EditTodo extends Component {
                                 />
                     </div>
                     <div className="form-group">
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input"
-                                    type="radio"
-                                    name="priorityOptions"
-                                    id="priorityLow"
-                                    value="Low"
-                                    checked={this.state.todo_priority==='Low'}
-                                    onChange={this.onChangeTodoPriority}
-                                    />
-                            <label className="form-check-label">Low</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input"
-                                    type="radio"
-                                    name="priorityOptions"
-                                    id="priorityMedium"
-                                    value="Medium"
-                                    checked={this.state.todo_priority==='Medium'}
-                                    onChange={this.onChangeTodoPriority}
-                                    />
-                            <label className="form-check-label">Medium</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input"
-                                    type="radio"
-                                    name="priorityOptions"
-                                    id="priorityHigh"
-                                    value="High"
-                                    checked={this.state.todo_priority==='High'}
-                                    onChange={this.onChangeTodoPriority}
-                                    />
-                            <label className="form-check-label">High</label>
-                        </div>
+                    <label><h6>Priority</h6></label>
+                    <label>
+                      <input  class="with-gap"
+                              type="radio"
+                              name="priorityOptions"
+                              id="priorityLow"
+                              value="Low"
+                              checked={this.state.todo_priority==='Low'}
+                              onChange={this.onChangeTodoPriority}
+                              />
+                              <span>Low</span>
+                    </label>
+                    <div></div>
+                    <label>
+                      <input  class="with-gap"
+                              type="radio"
+                              name="priorityOptions"
+                              id="priorityMedium"
+                              value="Medium"
+                              checked={this.state.todo_priority==='Medium'}
+                              onChange={this.onChangeTodoPriority}
+                              />
+                              <span>Medium</span>
+                    </label>
+                    <div></div>
+                    <label>
+                      <input  class="with-gap"
+                              type="radio"
+                              name="priorityOptions"
+                              id="priorityHigh"
+                              value="High"
+                              checked={this.state.todo_priority==='High'}
+                              onChange={this.onChangeTodoPriority}
+                              />
+                              <span>High</span>
+                    </label>
                     </div>
-                    <div className="form-check">
+                    <div className="form-check" style={{marginTop: 5, marginLeft: 5}}>
+                        <label className="form-check-label" htmlFor="completedCheckbox">
                         <input  className="form-check-input"
                                 id="completedCheckbox"
                                 type="checkbox"
@@ -140,17 +145,14 @@ export default class EditTodo extends Component {
                                 checked={this.state.todo_completed}
                                 value={this.state.todo_completed}
                                 />
-                        <label className="form-check-label" htmlFor="completedCheckbox">
-                            Completed
+                            <span>Completed</span>
                         </label>
                     </div>
-
-                    <br />
-
-                    <div className="form-group">
+                    <div className="form-group" style={{marginTop: 10}}>
                         <input type="submit" value="Update Todo" className="btn btn-primary" />
                     </div>
                 </form>
+                <div class="col s6"><h6><Link to="/dashboard" className="nav-link">&#171; Back</Link></h6></div>
             </div>
         )
     }
